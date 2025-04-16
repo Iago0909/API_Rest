@@ -48,3 +48,30 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+
+2. Relatório Técnico
+
+Processo de Desenvolvimento
+
+O projeto foi desenvolvido com o objetivo de praticar o consumo de APIs REST em um app React Native. Comecei estruturando a aplicação com uma tela principal que lista usuários aleatórios consumidos da API Random Data API. Em seguida, implementei uma navegação simples entre a tela de listagem e os detalhes do usuário selecionado.
+Utilizei useEffect para buscar os dados assim que a tela carrega e useState para gerenciar o estado da lista, carregamento e erros. Também adicionei a funcionalidade de pull-to-refresh, permitindo que o usuário atualize a lista deslizando a tela para baixo.
+
+⚠️ Desafios Encontrados e Soluções
+
+Erro na requisição da API: Em algumas chamadas, a API retornava uma lista vazia ou com apenas um item. Para resolver isso, ajustei a URL incluindo o parâmetro ?size=10, garantindo que sempre fossem retornados 10 usuários.
+Imagem de avatar quebrando layout: Em alguns casos, a imagem do avatar era inválida ou demorava a carregar, o que afetava o visual da lista. Para isso, adicionei um estilo com borderRadius e size fixo, garantindo que mesmo imagens com erro mantivessem o layout estável.
+Gerenciamento de estados entre telas: Para alternar entre a lista e os detalhes, implementei a lógica diretamente no App.js, usando um estado selectedUser que controla a tela exibida. Isso manteve a navegação leve e sem necessidade de bibliotecas externas.
+
+🔄 Fetch vs. Axios
+
+Durante o desenvolvimento, optei por utilizar o fetch, que é nativo do JavaScript e já está disponível sem necessidade de instalação. Ele é suficiente para chamadas simples como as desse projeto.
+No entanto, vale a pena destacar algumas comparações:
+Característica	Fetch	Axios
+Instalação	Nativo, sem instalação	Requer instalação via npm ou yarn
+Suporte a JSON	Requer res.json() manualmente	Já retorna os dados convertidos
+Interceptadores	Não possui	Possui interceptadores nativos
+Cancelamento de requisições	Complexo	Fácil de usar com CancelToken
+Se o projeto crescesse ou tivesse autenticação, tratamentos globais de erro ou loading, o Axios provavelmente seria a escolha mais robusta.
+Random Data API | Effortless Random Data at Your Fingertips
+Random Data API Landing Page
